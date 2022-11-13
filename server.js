@@ -1,9 +1,6 @@
 // Core functionality
 const express = require('express')
 const cors = require('cors')
-const https = require('https')
-const fs = require('fs')
-const path = require('path')
 require('dotenv').config() 
 
 // importing functionality from controller
@@ -14,15 +11,10 @@ const login = require('./controller/login')
 const register = require('./controller/register')
 const imageKit  = require('./controller/imagekit.js')
 
-const port = Number(process.env.PORT);
+const port = process.env.PORT || 3001; 
 const app = express()
 
 app.use(cors({origin: '*'}))
-
-const SSLServer = https.createServer({
-    key: fs.readFileSync(path.join(__dirname,'src','privateKey.pem')),
-    cert: fs.readFileSync(path.join(__dirname,'src','SSLCertificate.pem'))
-},app)
 
 app.get('/imagekitauthentication',(req,res)=>{
 
@@ -59,6 +51,7 @@ app.get('/register',(req,res)=>{
 app.get('/test',(req,res)=>{
     console.log("------Processing test: Server step------")
     console.log(req.query)
+    res.send({outcome: "heeloing you have tested it"})
 })
 
 const data = {name: "marcus",photo: "something", email: "marcus@gmail.com"}
@@ -95,9 +88,8 @@ app.get('/updateprofiledata',(req,res)=>{
     })
 })
 
-SSLServer.listen(port,()=>{
-    console.log(`Listening through SSL server on port ${port}...`)
+
+
+app.listen(port,()=>{
+    console.log(`Listening to port ${port}...`)
 })
-// app.listen(port,()=>{
-//     console.log(`Listening to port ${port}...`)
-// })

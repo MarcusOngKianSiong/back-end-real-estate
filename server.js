@@ -11,7 +11,7 @@ const login = require('./controller/login')
 const register = require('./controller/register')
 const imageKit  = require('./controller/imagekit.js')
 
-const port = process.env.PORT || 3001; 
+const port = 41847; 
 const app = express()
 
 app.use(cors({origin: '*'}))

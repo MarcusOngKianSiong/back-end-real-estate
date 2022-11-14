@@ -1,7 +1,7 @@
 // Core functionality
 const express = require('express')
 const cors = require('cors')
-require('dotenv').config() 
+// require('dotenv').config() 
 
 // importing functionality from controller
 const userClass = require('./src/userClass')

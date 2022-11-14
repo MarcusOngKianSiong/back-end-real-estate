@@ -9,7 +9,7 @@ const client = new Client({
     database: "accounts"
 })
 
-client.connect();
+// client.connect();
 
 const checkData = async (userObject) => {
     console.log("------Checking data: Model step------")

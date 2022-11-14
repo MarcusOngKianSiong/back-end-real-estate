@@ -17,6 +17,10 @@ const app = express()
 
 app.use(cors({origin: '*'}))
 
+app.get('/',(req,res)=>{
+    res.send({outcome: "Helllloooooo"})
+})
+
 app.get('/imagekitauthentication',(req,res)=>{
 
 })

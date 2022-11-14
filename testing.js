@@ -23,6 +23,10 @@ app.get('/something',(req,res)=>{
   res.send({outcome: "Hello there from heroku!"})
 })
 
+app.get('/nothing',(req,res)=>{
+  res.send({outcome: "THERE IS NOTHING HERE!"})
+})
+
 app.listen(PORT, () => { // start server and listen on specified port
   console.log(`App is running on ${PORT}`) // confirm server is running and log port to the console
 }) 

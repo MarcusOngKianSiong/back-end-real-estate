@@ -5,12 +5,12 @@ const cors = require('cors')
 // require('dotenv').config() 
 
 // importing functionality from controller
-const userClass = require('./src/userClass')
-const actionClass = require('./src/actionOutcomeClass')
-const jwt = require('./src/jwt.js');
-const login = require('./controller/login')
-const register = require('./controller/register')
-const imageKit  = require('./controller/imagekit.js')
+// const userClass = require('./src/userClass')
+// const actionClass = require('./src/actionOutcomeClass')
+// const jwt = require('./src/jwt.js');
+// const login = require('./controller/login')
+// const register = require('./controller/register')
+// const imageKit  = require('./controller/imagekit.js')
 
 const port = process.env.PORT;
 const app = express()

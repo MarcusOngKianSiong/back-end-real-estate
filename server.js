@@ -4,8 +4,8 @@ const express = require('express')
 const cors = require('cors')
 // require('dotenv').config() 
 
-// importing functionality from controller
-// const userClass = require('./src/userClass')
+// // importing functionality from controller
+const userClass = require('./src/userClass')
 // const actionClass = require('./src/actionOutcomeClass')
 // const jwt = require('./src/jwt.js');
 // const login = require('./controller/login')

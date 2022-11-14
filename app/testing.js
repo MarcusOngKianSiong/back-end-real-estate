@@ -1,6 +1,6 @@
 const express = require('express'); // import express module (simplifies routing/requests, among other things)
 const app = express(); // create an instance of the express module (app is the conventional variable name used)
-const fetch = require('node-fetch'); // import node-fetch (enables the fetch API to be used server-side)
+// const fetch = require('node-fetch'); // import node-fetch (enables the fetch API to be used server-side)
 const PORT = process.env.PORT; // use either the host env var port (PORT) provided by Heroku or the local port (5000) on your machine
 const cors = require('cors')
 
@@ -23,6 +23,6 @@ app.get('/something',(req,res)=>{
   res.send({outcome: "Hello there from heroku!"})
 })
 
-app.listen(41847, () => { // start server and listen on specified port
+app.listen(PORT, () => { // start server and listen on specified port
   console.log(`App is running on ${PORT}`) // confirm server is running and log port to the console
 }) 

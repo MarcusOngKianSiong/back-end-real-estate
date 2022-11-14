@@ -1,4 +1,4 @@
-const jwt = require('./jwt.js')
+// const jwt = require('./jwt.js')
 const database = require('../model/actions.js')
 
 class User{

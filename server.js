@@ -1,4 +1,5 @@
 // Core functionality
+console.log("-------RUNNING SERVER SCRIPT----------")
 const express = require('express')
 const cors = require('cors')
 // require('dotenv').config() 

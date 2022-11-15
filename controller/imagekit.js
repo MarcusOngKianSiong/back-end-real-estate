@@ -13,4 +13,9 @@ const authentication = () => {
     return authenticationResult;
 }
 
-module.exports = {authentication}
+const deleteImage = async (imageLink) => {
+    console.log("----DELETING PROFILE PICTURE--------")
+    return await imageKit.deleteFile(imageLink)
+}
+
+module.exports = {authentication,deleteImage}

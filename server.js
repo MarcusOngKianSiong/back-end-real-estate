@@ -25,9 +25,9 @@ app.get('/',(req,res)=>{
 
 app.get('/checkdatabase',(req,res)=>{
     database.checkData()
-    .then(res=>{
-        console.log(res.rows)
-        res.send(res.rows)
+    .then(data=>{
+        console.log(data.rows)
+        res.send(data.rows)
     })
 })
 

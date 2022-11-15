@@ -5,13 +5,14 @@ const cors = require('cors')
 // require('dotenv').config() 
 
 const database = require('./model/database.js')
+const imageKit  = require('./controller/imagekit.js')
 // // importing functionality from controller
 // const userClass = require('./src/userClass.js')
 // const actionClass = require('./src/actionOutcomeClass')
 // const jwt = require('./src/jwt.js');
 // const login = require('./controller/login')
 // const register = require('./controller/register')
-// const imageKit  = require('./controller/imagekit.js')
+
 
 const port = process.env.PORT;
 const app = express()
@@ -32,9 +33,11 @@ app.get('/checkdatabase',(req,res)=>{
 })
 
 
-// app.get('/imagekitauthentication',(req,res)=>{
-
-// })
+app.get('/imagekitauthentication',(req,res)=>{
+    console.log("---------Processing imagekit authentication----------")
+    const authenticationResult = imageKit.authentication();
+    res.send(authenticationResult);
+})
 
 // app.get('/login',(req,res)=>{
 //     console.log("------Processing Login: Server step------")

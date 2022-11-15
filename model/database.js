@@ -6,7 +6,7 @@ const {Client} = require('pg');
 // --password 
 // --dbname=d1rlatk18qeqg2 
 
-const herokuClient = new Client({
+const herokuPSQLClient = new Client({
     host: "ec2-52-1-17-228.compute-1.amazonaws.com",
     user: "xpflcriillmvkv",
     port: "5432",
@@ -14,4 +14,11 @@ const herokuClient = new Client({
     database: "d1rlatk18qeqg2"
 })
 
-herokuClient.connect()
+herokuPSQLClient.connect()
+
+const checkData = async () => {
+    console.log("------Checking data: Model step------");
+    return await herokuPSQLClient.query(`select * from users;'`);
+}
+
+module.exports = {checkData}

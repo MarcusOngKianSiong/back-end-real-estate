@@ -8,7 +8,7 @@ const database = require('./model/database.js')
 const imageKit  = require('./controller/imagekit.js')
 // // importing functionality from controller
 // const userClass = require('./src/userClass.js')
-const actionOutComeClass = require('./src/actionOutcomeClass')
+// const actionOutComeClass = require('./src/actionOutcomeClass')
 // const jwt = require('./src/jwt.js');
 // const login = require('./controller/login')
 // const register = require('./controller/register')
@@ -43,7 +43,7 @@ app.get('/deleteprofilepicture',(req,res)=>{
     console.log("---------Processing imagekit delete image----------")
     // const actionOutcomeObject = new actionOutComeClass("delete profile picture")
 
-    const data = req.query();
+    const data = req.query;
     console.log(data)
     imageKit.deleteImage(data.imageLink)
     .then(respond=>{
@@ -54,6 +54,7 @@ app.get('/deleteprofilepicture',(req,res)=>{
         console.log(respond)
         res.send({outcome: false})
     })
+    
 })
 
 // app.get('/login',(req,res)=>{

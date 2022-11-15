@@ -41,7 +41,7 @@ app.get('/imagekitauthentication',(req,res)=>{
 app.get('/deleteprofilepicture',(req,res)=>{
 
     console.log("---------Processing imagekit delete image----------")
-    const actionOutcomeObject = new actionOutComeClass("delete profile picture")
+    // const actionOutcomeObject = new actionOutComeClass("delete profile picture")
 
     const data = req.query();
     console.log(data)

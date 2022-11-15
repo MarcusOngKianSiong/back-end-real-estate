@@ -15,9 +15,10 @@ const herokuPSQLClient = new Client({
 
 herokuPSQLClient.connect()
 
+
 const checkData = async () => {
     console.log("------Checking data: Model step------");
-    return await herokuPSQLClient.query(`select * from users;'`);
+    return await herokuPSQLClient.query(`select * from users;`);
 }
 
 module.exports = {checkData}

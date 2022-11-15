@@ -6,7 +6,6 @@ class User{
         this.email = userDetails.email
         this.password = userDetails.password
         this.primaryKey = null;
-
     }
     getEmail(){
         return this.email

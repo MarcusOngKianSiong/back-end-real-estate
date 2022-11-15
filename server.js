@@ -4,8 +4,9 @@ const express = require('express')
 const cors = require('cors')
 // require('dotenv').config() 
 
+const database = require('./model/database.js')
 // // importing functionality from controller
-const userClass = require('./src/userClass.js')
+// const userClass = require('./src/userClass.js')
 // const actionClass = require('./src/actionOutcomeClass')
 // const jwt = require('./src/jwt.js');
 // const login = require('./controller/login')
@@ -20,6 +21,16 @@ app.use(cors({origin: '*'}))
 app.get('/',(req,res)=>{
     res.send({outcome: "Helllloooooo"})
 })
+
+
+app.get('/checkdatabase',(req,res)=>{
+    database.checkData()
+    .then(res=>{
+        console.log(res)
+        res.send(res)
+    })
+})
+
 
 // app.get('/imagekitauthentication',(req,res)=>{
 

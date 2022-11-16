@@ -4,7 +4,7 @@ const express = require('express')
 const cors = require('cors')
 // require('dotenv').config() 
 
-const database = require('./model/database.js')
+// const database = require('./model/database.js')
 const imageKit  = require('./controller/imagekit.js')
 // // importing functionality from controller
 // const userClass = require('./src/userClass.js')
@@ -14,7 +14,7 @@ const imageKit  = require('./controller/imagekit.js')
 // const register = require('./controller/register')
 
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const app = express()
 
 app.use(cors({origin: '*'}))

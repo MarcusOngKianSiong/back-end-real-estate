@@ -22,7 +22,7 @@ router.use((req,res,next)=>{
     const userID = jwt.verifyJWTToken(token);
     console.log("check userID: ",userID)
     if(userID){
-        id = userID;
+        id = userID.id;
         next()
     }else{
         res.send({action: "token verification",outcome: false,reason: "token cannot be verified....."})

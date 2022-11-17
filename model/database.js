@@ -18,7 +18,7 @@ herokuPSQLClient.connect()
 
 const checkData = async () => {
     console.log("------Checking data: Model step------");
-    return await herokuPSQLClient.query(`select * from profileData`);
+    return await herokuPSQLClient.query(`select * from profileData;`);
 }
 
 const updateProfilePictureData = async (fileId,filePath,id) => {

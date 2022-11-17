@@ -56,12 +56,10 @@ router.get('/test',(req,res)=>{
     // res.send({outcome: "something here"})
     database.checkData()
     .then(respond=>{
-        return respond.json()
+        console.log("CHECKING: ",respond.rows)
+        res.send(respond.rows)
     })
-    .then(respond=>{
-        console.log("CHECKING!!!!!",respond)
-        res.send({outcome: respond})
-    })
+    
     // res.send({outcome: "testing profileData route"})
 })
 

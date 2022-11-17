@@ -1,6 +1,7 @@
 const express = require('express');
 const ImageKit = require('imagekit');
 const database = require('../model/database.js')
+const jwtObject = require('../src/jwtObject.js')
 
 const router = express.Router();
 
@@ -10,9 +11,22 @@ const imagekit = new ImageKit({
     privateKey: 'private_aaCdEQaDC8kj1gIDzJsxxgnWeFE='
 });
 
+let id = null;
+
 router.use((req,res,next)=>{
     console.log("ENTERING PROFILE DATA SCRIPT......")
-    next()
+    // How to process the token here?
+    const token = req.query.token;
+    
+    const jwt = new jwtObject.jwtObject();
+    const userID = jwt.verifyJWTToken(token)
+    if(userID){
+        id = userID;
+        next()
+    }else{
+        res.send({outcome: false,reason: "token cannot be verified....."})
+    }
+    
 })
 
 router.get('/auth',(req,res)=>{
@@ -36,6 +50,7 @@ router.get('/deleteProfileImage',(req,res)=>{
 
 router.get('/getProfilePicture',(req,res)=>{
     console.log("GETTING PROFILE PICTURE.....")
+    
     res.send({outcome: true, data: {fileId: '637509cee809dd54b096075f', filePath: 'ENTJ_Male_Rngu9OYs2.jpg'}})
 })
 
@@ -54,6 +69,8 @@ router.get('/saveProfilePicture',(req,res)=>{
 
 router.get('/test',(req,res)=>{
     // res.send({outcome: "something here"})
+    console.log("PROCESSING TEST STEP....")
+    console.log("account ID: ",id)
     database.checkData()
     .then(respond=>{
         console.log("CHECKING: ",respond.rows)

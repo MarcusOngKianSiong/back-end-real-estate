@@ -51,10 +51,18 @@ router.get('/deleteProfileImage',(req,res)=>{
 
 router.get('/getProfilePicture',(req,res)=>{
     database.getProfilePicture(id)
-    .then(res=>{
-        console.log("CHECKING RETURN VALUE: ",res)
+    .then(respond=>{
+        const profileImageData = respond.rows
+        if(profileImageData[0].fileid){
+            res.send({outcome: true, data: {fileId: profileImageData[0].fileid, filePath: profileImageData[0].filepath}})        
+        }else{
+            res.send({outcome: true, data: {fileId: '637509cee809dd54b096075f', filePath: 'ENTJ_Male_Rngu9OYs2.jpg'}})
+        }
     })
-    res.send({outcome: true, data: {fileId: '637509cee809dd54b096075f', filePath: 'ENTJ_Male_Rngu9OYs2.jpg'}})
+    .catch(err=>{
+        console.log("ERROR IN GETTING PROFILE PICTURE DATA.....")
+    })
+    
 })
 
 router.get('/saveProfilePicture',(req,res)=>{

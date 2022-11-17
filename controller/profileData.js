@@ -54,12 +54,12 @@ router.get('/saveProfilePicture',(req,res)=>{
 
 router.get('/test',(req,res)=>{
     database.checkData()
-    .then(res=>{
-        return res.json()
+    .then(respond=>{
+        return respond.json()
     })
-    .then(res=>{
-        console.log("CHECKING!!!!!",res)
-        res.send({outcome: res})
+    .then(respond=>{
+        console.log("CHECKING!!!!!",respond)
+        res.send({outcome: respond})
     })
     // res.send({outcome: "testing profileData route"})
 })

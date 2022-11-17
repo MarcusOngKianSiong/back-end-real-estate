@@ -22,3 +22,5 @@ class JWTObject{
         return userId;
     }
 }
+
+module.exports = {JWTObject}

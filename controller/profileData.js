@@ -12,7 +12,7 @@ const imagekit = new ImageKit({
 });
 
 let id = null;
-
+const defaultImageID = ''
 router.use((req,res,next)=>{
     console.log("ENTERING PROFILE DATA SCRIPT......")
     // How to process the token here?
@@ -24,9 +24,9 @@ router.use((req,res,next)=>{
         id = userID;
         next()
     }else{
-        res.send({outcome: false,reason: "token cannot be verified....."})
+        res.send({action: "token verification",outcome: false,reason: "token cannot be verified....."})
     }
-    
+
 })
 
 router.get('/auth',(req,res)=>{
@@ -49,8 +49,10 @@ router.get('/deleteProfileImage',(req,res)=>{
 })
 
 router.get('/getProfilePicture',(req,res)=>{
-    console.log("GETTING PROFILE PICTURE.....")
-    
+    database.getProfilePicture(id)
+    .then(res=>{
+        console.log("CHECKING RETURN VALUE: ",res.rows)
+    })
     res.send({outcome: true, data: {fileId: '637509cee809dd54b096075f', filePath: 'ENTJ_Male_Rngu9OYs2.jpg'}})
 })
 
@@ -58,12 +60,20 @@ router.get('/saveProfilePicture',(req,res)=>{
     console.log("SAVING PROFILE PICTURE......")
     const query = req.query;
     console.log(query);
-
-    // Update profileImage datatable -> fileId, filePath
-    
+    database.updateProfilePictureData(query.fileId,query.filePath,id)
+    .then(respond=>{
+        console.log("UPDATED: ",respond)
+        // If imageid does not point to the default image, then delete the image
+        if(query.previousProfilePictureId !== '637509cee809dd54b096075f'){
+            res.redirect(`/deleteProfileImage?fileId=${query.previousProfilePictureId}`)
+        }
+    })
+    .then(err=>{
+        console.log("Error in updating the profile image")
+    })
+    // Update profileImage datatable -> fileId, filePath    
 
     // Remove the previous image from image kit -> previousProfilePictureId
-
 
 })
 

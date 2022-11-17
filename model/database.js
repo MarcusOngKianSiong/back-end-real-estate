@@ -21,10 +21,14 @@ const checkData = async () => {
     return await herokuPSQLClient.query(`select * from profileData;`);
 }
 
+const getProfilePicture = async (id) => {
+    return await herokuPSQLClient.query(`select fileid,filepath from profileData where id = ${id}`)
+}
+
 const updateProfilePictureData = async (fileId,filePath,id) => {
     // How do you say to find a row with a specific id 
     // and update a specifc value in it?
     return await herokuPSQLClient.query(`update profileData set fileid = ${fileId},filepath = ${filePath} where id = ${id}`)
 }
 
-module.exports = {checkData,updateProfilePictureData}
+module.exports = {checkData,updateProfilePictureData,getProfilePicture}

@@ -4,7 +4,7 @@ const express = require('express')
 const cors = require('cors')
 // require('dotenv').config() 
 
-// const database = require('./model/database.js')
+const database = require('./model/database.js')
 const profileData = require('./controller/profileData.js')
 const imageKit  = require('./controller/imagekit.js')
 // // importing functionality from controller

@@ -28,7 +28,11 @@ const getProfilePicture = async (id) => {
 const updateProfilePictureData = async (fileId,filePath,id) => {
     // How do you say to find a row with a specific id 
     // and update a specifc value in it?
-    return await herokuPSQLClient.query(`update profileData set fileid = ${fileId},filepath = ${filePath} where id = ${id}`)
+    console.log("CHECKING WITHIN: ")
+    console.log("fileId: ",fileId)
+    console.log("filePath: ",filePath)
+    console.log("id: ",id)
+    return await herokuPSQLClient.query(`update profileData set fileid = ${fileId},filepath = ${filePath} where id = ${id};`)
 }
 
 module.exports = {checkData,updateProfilePictureData,getProfilePicture}

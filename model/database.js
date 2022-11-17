@@ -31,8 +31,8 @@ const updateProfilePictureData = async (fileId,filePath,id) => {
     console.log("CHECKING WITHIN: ")
     console.log("fileId: ",fileId)
     console.log("filePath: ",filePath)
-    console.log("id: ",id)
-    return await herokuPSQLClient.query(`update profileData set fileid = ${fileId},filepath = ${filePath} where id = ${id};`)
+    console.log("id: ",typeof id)
+    return await herokuPSQLClient.query(`update profileData set fileid = '${fileId}',filepath = '${filePath}' where id = ${id};`)
 }
 
 module.exports = {checkData,updateProfilePictureData,getProfilePicture}

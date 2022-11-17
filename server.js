@@ -5,6 +5,7 @@ const cors = require('cors')
 // require('dotenv').config() 
 
 // const database = require('./model/database.js')
+const profileData = require('./controller/profileData.js')
 const imageKit  = require('./controller/imagekit.js')
 // // importing functionality from controller
 // const userClass = require('./src/userClass.js')
@@ -18,6 +19,8 @@ const port = process.env.PORT || 3000;
 const app = express()
 
 app.use(cors({origin: '*'}))
+
+app.use('/profileData',profileData);
 
 app.get('/',(req,res)=>{
     res.send({outcome: "Helllloooooo"})

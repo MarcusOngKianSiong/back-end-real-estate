@@ -27,7 +27,6 @@ router.use((req,res,next)=>{
     }else{
         res.send({action: "token verification",outcome: false,reason: "token cannot be verified....."})
     }
-
 })
 
 router.get('/auth',(req,res)=>{
@@ -69,12 +68,13 @@ router.get('/saveProfilePicture',(req,res)=>{
     console.log("SAVING PROFILE PICTURE......")
     const query = req.query;
     console.log(query);
+    // Update database with the confirmed profile picture data
     database.updateProfilePictureData(query.fileId,query.filePath,id)
     .then(respond=>{
         console.log("UPDATED: ",respond)
-        // If imageid does not point to the default image, then delete the image
+        // Delete the previous profile picture if there is one
         if(query.previousProfilePictureId !== '637509cee809dd54b096075f'){
-            res.redirect(`/deleteProfileImage?fileId=${query.previousProfilePictureId}`)
+            imagekit.deleteFile(query.previousProfilePictureId)
         }
     })
     .then(err=>{

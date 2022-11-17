@@ -18,7 +18,7 @@ router.use((req,res,next)=>{
     // How to process the token here?
     const token = req.query.token;
     
-    const jwt = new jwtObject.jwtObject();
+    const jwt = new jwtObject.JWTObject();
     const userID = jwt.verifyJWTToken(token)
     if(userID){
         id = userID;

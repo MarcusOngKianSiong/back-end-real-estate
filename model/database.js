@@ -22,7 +22,7 @@ const checkData = async () => {
 }
 
 const getProfilePicture = async (id) => {
-    return await herokuPSQLClient.query(`select fileid,filepath from profileData where id = ${id}`)
+    return await herokuPSQLClient.query(`select fileid,filepath from profileData where id = ${id};`)
 }
 
 const updateProfilePictureData = async (fileId,filePath,id) => {

@@ -17,9 +17,10 @@ router.use((req,res,next)=>{
     console.log("ENTERING PROFILE DATA SCRIPT......")
     // How to process the token here?
     const token = req.query.token;
-    
+    console.log("check token: ",token)
     const jwt = new jwtObject.JWTObject();
-    const userID = jwt.verifyJWTToken(token)
+    const userID = jwt.verifyJWTToken(token);
+    console.log("check userID: ",userID)
     if(userID){
         id = userID;
         next()
@@ -51,7 +52,7 @@ router.get('/deleteProfileImage',(req,res)=>{
 router.get('/getProfilePicture',(req,res)=>{
     database.getProfilePicture(id)
     .then(res=>{
-        console.log("CHECKING RETURN VALUE: ",res.rows)
+        console.log("CHECKING RETURN VALUE: ",res)
     })
     res.send({outcome: true, data: {fileId: '637509cee809dd54b096075f', filePath: 'ENTJ_Male_Rngu9OYs2.jpg'}})
 })

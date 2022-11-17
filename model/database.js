@@ -18,7 +18,13 @@ herokuPSQLClient.connect()
 
 const checkData = async () => {
     console.log("------Checking data: Model step------");
-    return await herokuPSQLClient.query(`select * from users;`);
+    return await herokuPSQLClient.query(`select * from profileData`);
 }
 
-module.exports = {checkData}
+const updateProfilePictureData = async (fileId,filePath,id) => {
+    // How do you say to find a row with a specific id 
+    // and update a specifc value in it?
+    return await herokuPSQLClient.query(`update profileData set fileid = ${fileId},filepath = ${filePath} where id = ${id}`)
+}
+
+module.exports = {checkData,updateProfilePictureData}

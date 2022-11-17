@@ -53,15 +53,15 @@ router.get('/saveProfilePicture',(req,res)=>{
 })
 
 router.get('/test',(req,res)=>{
-    res.send({outcome: "something here"})
-    // database.checkData()
-    // .then(respond=>{
-    //     return respond.json()
-    // })
-    // .then(respond=>{
-    //     console.log("CHECKING!!!!!",respond)
-    //     res.send({outcome: respond})
-    // })
+    // res.send({outcome: "something here"})
+    database.checkData()
+    .then(respond=>{
+        return respond.json()
+    })
+    .then(respond=>{
+        console.log("CHECKING!!!!!",respond)
+        res.send({outcome: respond})
+    })
     // res.send({outcome: "testing profileData route"})
 })
 
